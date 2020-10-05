@@ -42,7 +42,7 @@ jQuery("#sourceText-mobile, #menu-card-source-mobile, #menu-card-target-mobile")
     const sourceText=document.getElementById('sourceText-mobile').value;
     let detected=''
     if(sourceLang=="auto") {
-        const url='https://translation.googleapis.com/language/translate/v2/detect?key=AIzaSyDWjIrvFDwpNF3kqdkpjHj3xjMn46MjRyU';
+        const url='https://translation.googleapis.com/language/translate/v2/detect?key={APIKey}';
         const request=fetch(url,{
             method:'POST',
             headers: {
@@ -54,11 +54,11 @@ jQuery("#sourceText-mobile, #menu-card-source-mobile, #menu-card-target-mobile")
         .then(data=>{detected=data.data.detections[0][0].language;
             jQuery(".first-src-mobile").html(languages[detected])
         });
-        const callUrl='https://translation.googleapis.com/language/translate/v2?key=AIzaSyDWjIrvFDwpNF3kqdkpjHj3xjMn46MjRyU';
+        const callUrl='https://translation.googleapis.com/language/translate/v2?key={APIKey}';
         callAPI(callUrl,detected,targetLang,sourceText)
     }
     else {
-        const url='https://translation.googleapis.com/language/translate/v2?key=AIzaSyDWjIrvFDwpNF3kqdkpjHj3xjMn46MjRyU';
+        const url='https://translation.googleapis.com/language/translate/v2?key={APIKey}';
         callAPI(url,sourceLang,targetLang,sourceText)
     }
 });
@@ -101,7 +101,7 @@ jQuery("#sourceText, #menu-card-source, #menu-card-target").on('click change key
     const sourceText=document.getElementById('sourceText').value;
     let detected=''
     if(sourceLang=="auto") {
-        const url='https://translation.googleapis.com/language/translate/v2/detect?key=AIzaSyDWjIrvFDwpNF3kqdkpjHj3xjMn46MjRyU';
+        const url='https://translation.googleapis.com/language/translate/v2/detect?key={APIKey}';
         const request= fetch(url, {
             method:'POST',
             headers:{'Content-Type':'application/json',
@@ -112,12 +112,12 @@ jQuery("#sourceText, #menu-card-source, #menu-card-target").on('click change key
         .then(data=>{detected=data.data.detections[0][0].language;
             jQuery(".first-src").html(languages[detected])
         });
-        const callUrl='https://translation.googleapis.com/language/translate/v2?key=AIzaSyDWjIrvFDwpNF3kqdkpjHj3xjMn46MjRyU';
+        const callUrl='https://translation.googleapis.com/language/translate/v2?key={APIKey}';
         callAPI(callUrl,detected,targetLang,sourceText)
     } 
     else{
         jQuery(".first-src").html("Detect")
-        const url='https://translation.googleapis.com/language/translate/v2?key=AIzaSyDWjIrvFDwpNF3kqdkpjHj3xjMn46MjRyU';
+        const url='https://translation.googleapis.com/language/translate/v2?key={APIKey}';
         callAPI(url,sourceLang,targetLang,sourceText)
     }
 });
